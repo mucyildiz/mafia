@@ -2,6 +2,11 @@ To start server in development, run:
 
 ```npm start```
 
-Jeff waz here
+To start development environment, run:
 
-Note: All pushes to master deploy to heroku, if you're doing dev work create a new branch and test it before merging it with master
+```npm dev```
+
+Deploying to heroku:
+Automatic deployment is set up when changes are pushed to master branch. If doing development work, create a new branch and test it there before merging with master and pushing it.
+
+Jeff waz here
