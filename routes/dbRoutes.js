@@ -1,11 +1,6 @@
 const User = require('../models/User');
 
 module.exports = (app) => {
-  app.get('/api/test_db', async (req, res) => {
-    const user = await User.findByPk('0');
-    res.send(user);
-  });
-
   app.post('/api/user', async (req, res) => {
     const existingUser = await User.findByPk(req.body.user_id);
     if(existingUser){
