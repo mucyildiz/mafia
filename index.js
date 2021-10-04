@@ -12,7 +12,6 @@ app.use(
 );
 
 require('./routes/dbRoutes')(app);
-require('./routes/userRoutes')(app);
 
 app.use(express.json());
 app.use(express.urlencoded({
@@ -23,6 +22,7 @@ app.use(passport.session());
 require('./services/passport');
 
 require('./routes/authRoutes')(app);
+require('./routes/userRoutes')(app);
 
 
 if(process.env.NODE_ENV === 'production'){
