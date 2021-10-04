@@ -13,11 +13,11 @@ function App() {
         {/* Defaults route from / to /login so users have to login before continuing */}
         {/* If we want we can someday check if user was previously authenticated in last x hours/minutes
             and redirect somewhere else */}
-        <Route exact path='/' render={() => {<Redirect to='/login' />}} />
+        <Route exact path='/' render={() => {return(<Redirect to='/login' />);}} />
 
-        <Route exact path='/login' component={<Login />} />
+        <Route exact path='/login' component={Login} />
 
-        <Route component={<Oops />} />
+        <Route component={Oops} />
       </Switch>
     </Router>
   );
