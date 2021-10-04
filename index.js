@@ -9,7 +9,11 @@ app.use(
       maxAge: 30 * 24 * 60 * 60 * 1000, //30 days in ms
       keys: [keys.cookieKey]
   })
-)
+);
+
+require('./routes/dbRoutes')(app);
+require('./routes/userRoutes')(app);
+
 app.use(express.json());
 app.use(express.urlencoded({
   extended: true
@@ -19,7 +23,7 @@ app.use(passport.session());
 require('./services/passport');
 
 require('./routes/authRoutes')(app);
-require('./routes/dbRoutes')(app);
+
 
 if(process.env.NODE_ENV === 'production'){
   app.use(express.static('client/build'))
