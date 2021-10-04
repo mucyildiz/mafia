@@ -5,9 +5,19 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Grommet } from 'grommet';
 
+const theme={
+  global: {
+    colors: {
+      main: '#423f3e',
+      mainText: 'white',
+      tertiary: '#e7e7e7'
+    }
+  }
+}
+
 ReactDOM.render(
   <React.StrictMode>
-    <Grommet>
+    <Grommet theme={theme} background='tertiary' full>
       <App />
     </Grommet>
   </React.StrictMode>,
