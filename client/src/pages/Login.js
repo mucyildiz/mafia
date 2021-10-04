@@ -1,9 +1,15 @@
+import { useState } from 'react';
+
+import axios from 'axios';
+
 import { Box, Button, Card, CardBody, CardFooter, CardHeader, Text } from 'grommet';
 import { Google } from 'grommet-icons';
 
 import AppBar from '../components/AppBar';
 
 export default function Login() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
   return(
     <Box responsive align="center" full>
       <AppBar />
@@ -19,10 +25,12 @@ export default function Login() {
             <Text>To continue to the game, please log in with Google</Text>
           </CardBody>
           <CardFooter pad="medium">
-            <Button primary reverse label="Login with Google" icon={<Google color='plain' />} onClick={() => {alert("Signing in with Google")}} />
+            <Button primary reverse href='/auth/google' label="Login with Google" icon={<Google color='plain' />} />
           </CardFooter>
         </Card>
       </Box>
+
+      <Text>{isAuthenticated}</Text>
     </Box>
   );
 }

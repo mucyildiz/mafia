@@ -1,6 +1,6 @@
 import { useHistory } from 'react-router-dom';
 
-import { Anchor, Box, Button, Header, Text } from 'grommet';
+import { Anchor, Box, Header, Text } from 'grommet';
 
 export default function AppBar() {
     const history = useHistory();
