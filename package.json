@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/mucyildiz/mafia#readme",
   "dependencies": {
+    "cookie-session": "^1.4.0",
     "express": "^4.17.1",
     "passport": "^0.5.0",
     "passport-google-oauth20": "^2.0.0",
