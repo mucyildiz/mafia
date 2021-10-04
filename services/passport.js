@@ -32,7 +32,7 @@ passport.use(
       user_name: profile.name.givenName,
       user_wins: 0
     }).catch(err => console.log(err));
-
+  
     done(null, newUser);
   })
 );
