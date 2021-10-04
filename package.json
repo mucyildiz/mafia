@@ -12,7 +12,13 @@
     "server": "nodemon index.js",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\"  \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
+    "test": "jest"
+  },
+  "jest": {
+    "testPathIgnorePatterns" : [
+      "./client" 
+    ]
   },
   "repository": {
     "type": "git",
@@ -35,6 +41,7 @@
   },
   "devDependencies": {
     "concurrently": "^6.3.0",
+    "jest": "^27.2.4",
     "nodemon": "^2.0.13"
   }
 }
