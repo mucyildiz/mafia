@@ -39,7 +39,9 @@ function LandingPage() {
           <CardHeader pad="small">Login</CardHeader>
           <CardBody align="center">This is an example login card</CardBody>
           <CardFooter pad="medium">
-            <Button primary onClick={() => {alert("Logged in!")}} label="Login" />
+            <a href='/auth/google'>
+              <Button primary onClick={() => {alert("Logged in!")}} label="Login" />
+            </a>
           </CardFooter>
         </Card>
       </Box>
