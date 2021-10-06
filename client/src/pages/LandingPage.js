@@ -29,12 +29,12 @@ const ItemCard = props => {
   );
 }
 
-function LandingPage() {
+function LandingPage(props) {
   const [friendCode, setFriendCode] = useState([null]);
 
   return (
     <Box full responsive align="center">
-      <AppBar />
+      <AppBar isAuthenticated={props.isAuthenticated}/>
 
       <Grid fill columns={{ size: "medium", count: "fit"}}>
         <ItemCard align="end" title="Host">

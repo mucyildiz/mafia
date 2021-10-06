@@ -27,7 +27,7 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path='/' component={LandingPage} />
+        <Route exact path='/' render={(props) => <LandingPage isAuthenticated={isAuthenticated}/>} />
 
         <Route component={Oops} />
       </Switch>
