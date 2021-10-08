@@ -7,7 +7,7 @@ import AppBar from '../components/AppBar';
 import { Link } from 'react-router-dom';
 
 const ItemCard = props => {
-  const [el, setEl] = useState(["small"]);
+  const [el, setEl] = useState("small");
 
   return(
     <Box fill responsive align={props.align} pad="large">
