@@ -1,10 +1,14 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { Redirect } from 'react-router-dom';
 
 import { Box, Button, Card, CardBody, CardFooter, CardHeader, Grid, Text, TextInput } from 'grommet';
 import { Group, User } from 'grommet-icons';
 
+import { io } from 'socket.io-client';
+
+import Axios from 'axios';
+
 import AppBar from '../components/AppBar';
-import { Link } from 'react-router-dom';
 
 const ItemCard = props => {
   const [el, setEl] = useState(["small"]);
@@ -31,10 +35,44 @@ const ItemCard = props => {
 
 function LandingPage(props) {
   const [friendCode, setFriendCode] = useState([null]);
+  const [redirect, setRedirect] = useState(false);
+  const [gameId, setGameId] = useState([]);
+  const [socket, setSocket] = useState({});
+
+  // useEffect(() => {
+  //   // Connect with server
+  //   console.log("connecting");
+  //   let socket = io('http://localhost:4000');
+  //   socket.on('connect', () => {
+  //     console.log(socket.connected());
+  //   });
+  // });
+
+  function connect() {
+    console.log("Connecting");
+    let socket = io();
+    socket.connect();
+    socket.on('connect', () => {
+      console.log(socket.connected());
+    })
+  }
+
+
+  function createGame() {
+    console.log("Creating game");
+  }
+
+  function joinGame() {
+    console.log(`Joining game ${friendCode}`);
+  }
 
   return (
     <Box full responsive align="center">
       <AppBar isAuthenticated={props.isAuthenticated}/>
+      <Button onClick={connect} label="Try" />
+
+      {/* Redirect for when the user wants to move on */}
+      {redirect ? <Redirect to={{pathname: "/game/" + gameId, state: {id: gameId}}} /> : null}
 
       <Grid fill columns={{ size: "medium", count: "fit"}}>
         <ItemCard align="end" title="Host">
@@ -46,7 +84,7 @@ function LandingPage(props) {
             <Group size="xlarge" />
           </CardBody>
           <CardFooter pad="small">
-            <Button primary label="Play Now" />
+            <Button primary label="Play Now" onClick={createGame} />
           </CardFooter>
         </ItemCard> 
 
@@ -62,7 +100,7 @@ function LandingPage(props) {
               placeholder="Enter Code" 
               onChange={(event) => {setFriendCode(event.target.value)}}
             />
-            <Button primary label="Join" onClick={() => alert("Joining game " + friendCode)} />
+            <Button primary label="Join" onClick={joinGame} />
           </CardFooter>
         </ItemCard>
       </Grid>

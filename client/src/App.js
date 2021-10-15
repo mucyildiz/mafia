@@ -7,6 +7,7 @@ import Axios from 'axios';
 import Login from './pages/Login';
 import Oops from './pages/Oops';
 import LandingPage from './pages/LandingPage';
+import Game from './pages/Game';
 
 function App() {
   const [isAuthenticated, setAuthenticated] = useState(false);
@@ -28,6 +29,7 @@ function App() {
     <Router>
       <Switch>
         <Route exact path='/' render={(props) => <LandingPage isAuthenticated={isAuthenticated}/>} />
+        <Route exact path ='/game/:id' component={Game} />
 
         <Route component={Oops} />
       </Switch>

@@ -23,7 +23,15 @@ require('./services/passport');
 
 require('./routes/authRoutes')(app);
 require('./routes/userRoutes')(app);
+require('./routes/connectRoute')(app);
 
+// SocketIO
+let server = require('http').createServer(app);
+let io = require('socket.io')(server);
+// Load game manager and pass socket.io to it
+require('./services/gameManager')(io);
+
+server.listen(4000);
 
 if(process.env.NODE_ENV === 'production'){
   app.use(express.static('client/build'))
